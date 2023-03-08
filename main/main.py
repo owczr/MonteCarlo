@@ -18,30 +18,28 @@ from pi import plot
 @click.option('--save-plot', type=click.BOOL, default=False, help='Save figure')
 def run(points_count, seed, height, width, p1, p2, save_plot):
     random.seed(seed)
-    points_count += 1
 
+    # Create list of pi estimates
     pi_list = [pi.Pi(count) for count in range(points_count)]
 
-    # Plot results
+    # Create figure and axes
     fig, axs = plt.subplots(2, 3, figsize=(width, height))
     gs = axs[0, 1].get_gridspec()
     axs[0, 2].remove()
     axbig = fig.add_subplot(gs[0, 1:])
-
     fig.tight_layout()
 
-    points_count_list = np.array(range(points_count))
-
+    # Prepare data for plots
+    points_count_list = np.array(range(points_count + 1))
     med = int(np.median(points_count_list))
     p_1 = int(np.percentile(points_count_list, p1))
     p_2 = int(np.percentile(points_count_list, p2))
 
+    # Plot
     plot.points_circle(axs[0, 0], pi_list[med])
-
-    plot.boxplot(axs[1, 0], pi_list[:p_1])
-    plot.boxplot(axs[1, 1], pi_list[p_1:p_2])
-    plot.boxplot(axs[1, 2], pi_list[p_2:])
-
+    plot.boxplot(axs[1, 0], pi_list[:p_1], f'0 and {p1} percentile')
+    plot.boxplot(axs[1, 1], pi_list[p_1:p_2], f'{p1} and {p2} percentiles')
+    plot.boxplot(axs[1, 2], pi_list[p_2:], f'{p2} percentile and last value')
     plot.all_estimates(axbig, pi_list)
 
     plt.show()

@@ -37,5 +37,6 @@ class Pi:
 
 
 def is_below_arch(x, y):
+    """Checks whether points are below or above circle arch"""
     y_theor = np.sqrt(RADIUS ** 2 - np.square(x))
     return y < y_theor
