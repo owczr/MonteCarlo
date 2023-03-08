@@ -34,6 +34,8 @@ def run():
     plot.boxplot(axs[1, 1], pi_list[p1:p2])
     plot.boxplot(axs[1, 2], pi_list[p2:])
 
+    plot.all_estimates(axbig, pi_list)
+
     plt.show()
 
 

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import colors
 
 from .pi import RADIUS, X_LIM, Y_LIM
 
@@ -17,11 +18,19 @@ def points_circle(ax, pi):
 
 def boxplot(ax, pi_list):
     pi_values = [pi.get_pi() for pi in pi_list]
-    print(pi_values)
     pi_split = np.array_split(pi_values, 10)
-    ax.boxplot(pi_split, list(range(10)))
+    bplots = ax.boxplot(pi_split, list(range(10)), patch_artist=True)
+    for patch in bplots['boxes']:
+        patch.set_facecolor('blue')
     ax.set_ylim((2, 4))
-    ax.axhline(y=np.pi)
+    ax.axhline(y=np.pi, c='r')
+
+
+def all_estimates(ax, pi_list):
+    pi_values = [pi.get_pi() for pi in pi_list]
+    ax.plot(pi_values, c='b')
+    ax.set_ylim((2, 4))
+    ax.axhline(y=np.pi, c='r')
 
 
 def _split(list_, size):
