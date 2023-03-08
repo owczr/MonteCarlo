@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 from .pi import RADIUS, X_LIM, Y_LIM
 
@@ -12,3 +13,17 @@ def points_circle(ax, pi):
     ax.set_ylim(*Y_LIM)
     ax.add_patch(circle)
     ax.set_title(f'Points: {len(pi)}, Estimated pi: {pi.get_pi():.2f}')
+
+
+def boxplot(ax, pi_list):
+    pi_values = [pi.get_pi() for pi in pi_list]
+    print(pi_values)
+    pi_split = np.array_split(pi_values, 10)
+    ax.boxplot(pi_split, list(range(10)))
+    ax.set_ylim((2, 4))
+    ax.axhline(y=np.pi)
+
+
+def _split(list_, size):
+    for i in range(0, len(list_), size):
+        yield list_[i:i + size]
