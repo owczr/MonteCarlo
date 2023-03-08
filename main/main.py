@@ -45,7 +45,7 @@ def run(points_count, seed, height, width, p1, p2, save_plot):
     plt.show()
 
     if save_plot:
-        plt.savefig('montecarlo.png')
+        fig.savefig('montecarlo.png')
 
 
 if __name__ == '__main__':
