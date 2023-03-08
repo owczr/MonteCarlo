@@ -5,7 +5,7 @@
 ## To run experiment
 ### Create new conda environement from requirements.txt
 ```
-conda create -n montecarlo requirements.txt;
+conda create -n montecarlo --file requirements.txt;
 conda activate montecarlo;
 ```
 ### Execute run.sh script
