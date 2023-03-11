@@ -26,7 +26,9 @@ def run(points_count, seed, height, width, p1, p2, save_plot):
     fig, axs = plt.subplots(2, 3, figsize=(width, height))
     gs = axs[0, 1].get_gridspec()
     axs[0, 2].remove()
+    axs[0, 1].remove()
     axbig = fig.add_subplot(gs[0, 1:])
+    axbig.tick_params(axis='y', which='both', bottom=False, top=False, labelbottom=False)
     fig.tight_layout()
 
     # Prepare data for plots
