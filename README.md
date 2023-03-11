@@ -22,7 +22,7 @@ python main/main.py --help
 ```
 
 ## Other information
-<p>This experiment is conducted with according parameters:</p>
+<p>Experiment parameters:</p>
 
 - Radius: 1
 - X range: 0, 1
@@ -36,6 +36,6 @@ python main/main.py --help
 - Second percentile: 75
 - Save plot: False
 
-<p>This program is part fo Computational Intelligence course, during 2023 summer semester on 3rd year of Data Engineering and Analysis on AGH UST</p>
+<p>This program was made for Computational Intelligence course, during 2023 summer semester on 3rd year of Data Engineering and Analysis on AGH UST</p>
 
 
